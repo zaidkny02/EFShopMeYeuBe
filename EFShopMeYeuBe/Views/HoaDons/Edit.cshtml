@@ -1,0 +1,46 @@
+﻿@model EFShopMeYeuBe.Models.HoaDon
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>HoaDon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="id" value="@Model.MaHd" />
+            <input type="hidden" asp-for="MaHd" />
+            <div class="form-group">
+                <label asp-for="NgayLapHd" class="control-label"></label>
+                <input asp-for="NgayLapHd" class="form-control" />
+                <span asp-validation-for="NgayLapHd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaNv" class="control-label">Tên nhân viên</label>
+                <select asp-for="MaNv" class="form-control" asp-items="ViewBag.MaNv"></select>
+                <span asp-validation-for="MaNv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaKh" class="control-label">Tên khách hàng</label>
+                <select asp-for="MaKh" class="form-control" asp-items="ViewBag.MaKh"></select>
+                <span asp-validation-for="MaKh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" /> |
+                <a asp-action="Index" asp-controller="ChiTietHoaDons" asp-route-id="@Model?.MaHd">Chi tiết hóa đơn</a> 
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EFShopMeYeuBe.Models.NhaCungCap>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNcc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdtncc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChiNcc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeLl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNcc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdtncc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiNcc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeLl)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaNcc">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaNcc">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaNcc">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model EFShopMeYeuBe.Models.ChiTietHoaDon
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ChiTietHoaDon</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ChiTietSanPham.MaSpNavigation.TenSp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ChiTietSanPham.MaSpNavigation.TenSp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ChiTietSanPham.Size)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ChiTietSanPham.Size)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SoLban)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SoLban)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaHdNavigation.MaHd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaHdNavigation.MaHd)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { hd_id=Model.MaHd,sp_id=Model.MaSp,size=Model.Size }) |
+    <a asp-action="Index">Back to List</a>
+</div>

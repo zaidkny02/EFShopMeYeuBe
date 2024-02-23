@@ -1,0 +1,48 @@
+﻿@model EFShopMeYeuBe.Models.NhaCungCap
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NhaCungCap</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TenNcc" class="control-label"></label>
+                <input asp-for="TenNcc" class="form-control" />
+                <span asp-validation-for="TenNcc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sdtncc" class="control-label"></label>
+                <input asp-for="Sdtncc" class="form-control" />
+                <span asp-validation-for="Sdtncc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaChiNcc" class="control-label"></label>
+                <input asp-for="DiaChiNcc" class="form-control" />
+                <span asp-validation-for="DiaChiNcc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeLl" class="control-label"></label>
+                <input asp-for="KeLl" class="form-control" />
+                <span asp-validation-for="KeLl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

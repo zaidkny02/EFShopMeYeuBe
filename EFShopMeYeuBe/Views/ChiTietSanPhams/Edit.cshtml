@@ -1,0 +1,46 @@
+﻿@model EFShopMeYeuBe.Models.ChiTietSanPham
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ChiTietSanPham</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="id_masp" value="@Model.MaSp" />
+            <input type="hidden" name="id_size" value="@Model.Size" />
+            <input type="hidden" asp-for="MaSp" />
+            <input type="hidden" asp-for="Size" /> 
+            <div class="form-group">
+                <label>Tên sp:</label>
+                <label>@ViewBag.TenSP</label>
+                <br />
+                <label asp-for="MaSp" class="control-label"></label>
+                @Html.DisplayFor(model => model.MaSp)
+                <br />
+                <label asp-for="Size" class="control-label"></label>
+                @Html.DisplayFor(model => model.Size)
+                <br />
+                <label asp-for="SoLuongTheoSize" class="control-label"></label>
+                <input asp-for="SoLuongTheoSize" class="form-control" />
+                <span asp-validation-for="SoLuongTheoSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

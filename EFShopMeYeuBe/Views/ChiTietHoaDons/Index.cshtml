@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EFShopMeYeuBe.Models.ChiTietHoaDon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+@if(ViewBag.hdid != null)
+    {
+        <a asp-action="Create" asp-route-id="@ViewBag.hdid">Create New</a>
+    }
+    else
+    {
+        <a asp-action="Create">Create New</a>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietSanPham.MaSpNavigation.TenSp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLban)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietSanPham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaHdNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTietSanPham.MaSpNavigation.TenSp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLban)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTietSanPham.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHdNavigation.MaHd)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { hd_id=item.MaHd,sp_id=item.MaSp,size=item.Size }) |
+                @Html.ActionLink("Details", "Details", new { hd_id=item.MaHd,sp_id=item.MaSp,size=item.Size }) |
+                    @Html.ActionLink("Delete", "Delete", new { hd_id=item.MaHd,sp_id=item.MaSp,size=item.Size })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

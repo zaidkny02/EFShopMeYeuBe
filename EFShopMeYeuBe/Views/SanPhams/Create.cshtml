@@ -1,0 +1,64 @@
+﻿@model EFShopMeYeuBe.Models.SanPham
+
+@{
+    ViewData["Title"] = "Create";
+}
+<script type="text/javascript">
+    function changeitem(){
+       // window.location.href = "/SanPhams/Index";
+    }
+</script>
+<h1>Create</h1>
+
+<h4>SanPham</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TenSp" class="control-label"></label>
+                <input asp-for="TenSp" class="form-control" />
+                <span asp-validation-for="TenSp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trangthaikinhdoanh" class="control-label"></label>
+                <input asp-for="Trangthaikinhdoanh" class="form-control" />
+                <span asp-validation-for="Trangthaikinhdoanh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mota" class="control-label"></label>
+                <input asp-for="Mota" class="form-control" />
+                <span asp-validation-for="Mota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dongia" class="control-label"></label>
+                <input asp-for="Dongia" class="form-control" />
+                <span asp-validation-for="Dongia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaNcc" class="control-label"></label>
+                <select asp-for="MaNcc" onchange="changeitem();" class ="form-control" asp-items="ViewBag.MaNcc"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaHang" class="control-label"></label>
+                <select asp-for="MaHang" class ="form-control" asp-items="ViewBag.MaHang"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaLoaiSp" class="control-label"></label>
+                <select asp-for="MaLoaiSp" class ="form-control" asp-items="ViewBag.MaLoaiSp"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,85 @@
+﻿@model EFShopMeYeuBe.Models.ChiTietHoaDon
+
+@{
+    ViewData["Title"] = "Create";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">  
+    $(document).ready(function () {
+        changeitem();
+    });
+        function changeitem(){
+            var masp = $('#id_masp').val();
+            $.ajax({
+                url: '/ChiTietHoaDons/ChangeSP',
+                //  url: '/Test/TestAjax',
+                data: { 'id_sp': masp },
+                dataType: 'json',
+                type: "post",
+                //cache: false,
+            success: function (response) {
+                $('#select_size').empty();
+                    //$('#lblThongbao').text(result);
+                for (var i = 0 ; i < response.length ; i++) {
+                        $('#select_size').append($('<option>', {
+                        value: response[i].size,
+                        text: response[i].size
+                        }));
+                    }
+                    //$("html").html(response);
+                    //$("#listitem").html(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $('#lblThongbao').text("Error ");
+                }
+            });
+        }
+</script>
+<h1>Create</h1>
+
+<h4>ChiTietHoaDon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            @if(ViewBag.Err != null)
+            {
+                <p style="color:red;">@ViewBag.Err</p>
+            }
+            <p id="lblThongbao"></p>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if(ViewBag.id != null)
+            {
+                <input type="hidden" name="id" value="@ViewBag.id" />
+            }
+            <div class="form-group">
+                <label asp-for="MaHd" class="control-label"></label>
+                <select asp-for="MaHd" class ="form-control" asp-items="ViewBag.MaHd"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaSp" class="control-label" >Tên SP</label>
+                <select   asp-for="MaSp"  s id="id_masp" class ="form-control"  asp-items="ViewBag.MaSp " onchange="changeitem();"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoLban" class="control-label"></label>
+                <input asp-for="SoLban" class="form-control" />
+                <span asp-validation-for="SoLban" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <select asp-for="Size" id="select_size" class ="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
